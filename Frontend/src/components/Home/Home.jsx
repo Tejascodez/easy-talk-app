@@ -6,7 +6,7 @@ import { RiMessage2Fill } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 const Home = () => {
 
-    const [AddPost, setAddPost] = useState([])
+    const [addPost, setAddPost] = useState(false);
 
     const suggestion = [
         {
@@ -58,17 +58,17 @@ const Home = () => {
                 <div className=' bg-gradient-to-br from-blue-200 via-violet-200 to-blue-200 h-full w-[60%] ' >
                     <div>
                         <div className='px-10 py-10 border-b border-black' >
-                            <a className='px-5 py-3 rounded-[6px] bg-gradient-to-t from-violet-500 via-purple-400 to-violet-500 ' href="">Add Post +</a>
+                            <button className='px-5 py-3 rounded-[6px] bg-gradient-to-t from-violet-500 via-purple-400 to-violet-500 ' onClick={()=>setAddPost(true)} href="">Add Post +</button>
                         </div>
 
                     </div>
 
-                    {AddPost ? (
+                    { addPost ? 
                         <div>
                         <form className="w-full  max-w-2xl mx-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-6 p-8 bg-violet-200/80 backdrop-blur-md border border-violet-300 rounded-2xl shadow-2xl">
                                 <div className="w-full space-y-4">
 
-                                    <p onClick={()=>{setAddPost(false)}} className='text-right p-2 mr-2 text-2xl cursor-pointer' >x</p>
+                                    <p className='text-right p-2 mr-2 text-2xl cursor-pointer' ><button onClick={()=>setAddPost(false)} >x</button></p>
                                     {/* Header */}
                                     <h2 className="text-3xl font-bold text-center text-violet-800 drop-shadow-md">Create a Post</h2>
 
@@ -114,10 +114,9 @@ const Home = () => {
                                     </div>
 
                                     {/* Submit Button */}
-                                    <div onClick={()=>{setAddPost(true)}} className="text-center">
+                                    <div  className="text-center">
                                         <button
                                             type="submit" 
-                                            
                                             className="px-8 py-3 bg-violet-600 text-white font-semibold rounded-xl hover:bg-violet-700 shadow-lg transition duration-300"
                                         >
                                             Post
@@ -127,7 +126,7 @@ const Home = () => {
                                 </div>
                             </form>
                     </div>
-                    ): <></>}
+                    : <></>}
                     
                 </div>
 
